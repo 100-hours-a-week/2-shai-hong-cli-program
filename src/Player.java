@@ -9,7 +9,6 @@ public class Player extends Person {
         this.salary = salary;
     }
 
-    @Override
     public String toString() {
         return name + " (능력치: " + ability + ", 연봉: " + salary + ")";
     }
