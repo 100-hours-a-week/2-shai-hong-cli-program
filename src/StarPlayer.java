@@ -1,3 +1,4 @@
+package src;
 public class StarPlayer extends Player {
     private String award;
 

@@ -1,3 +1,4 @@
+package src;
 public class Player extends Person {
     protected int ability;
     protected int salary;
