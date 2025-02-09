@@ -1,25 +1,14 @@
 package src;
 import java.util.*;
-import src.model.Person;
 import src.model.Player;
 import src.model.StarPlayer;
 import src.model.Team;
+import src.model.PlayerDataLoader;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Player> players = new ArrayList<>();
-        players.add(new StarPlayer("Stephen Curry", 93, 50, "MVP 2회"));
-        players.add(new StarPlayer("LeBron James", 90, 40, "MVP 4회, Finals MVP 4회"));
-        players.add(new StarPlayer("Kevin Durant", 92, 45, "Finals MVP 2회"));
-        players.add(new Player("Luka Doncic", 90, 40));
-        players.add(new Player("Anthony Davis", 85, 35));
-        players.add(new StarPlayer("Shai Gilgeous-Alexander", 95, 40, "올-NBA 1st 팀"));
-        players.add(new Player("Bam Adebayo", 80, 30));
-        players.add(new Player("Jason Tatum", 85, 40));
-        players.add(new Player("Paul George", 80, 35));
-        players.add(new Player("Kawhi Leonard", 85, 40));
-
+        List<Player> players = PlayerDataLoader.loadPlayers();
         Team team = new Team();
 
         System.out.println("🏀 NBA 선수 드래프트 시작! (최대 연봉 200)");
@@ -41,6 +30,7 @@ public class Main {
             }
             int choice = scanner.nextInt();
 
+            // players.size()로 유효범위체크
             if (choice < 1 || choice > players.size()) {
                 System.out.println("❌ 올바른 번호를 입력하세요! (1~" + players.size() + ")");
                 continue;
