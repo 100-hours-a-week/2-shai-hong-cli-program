@@ -1,4 +1,5 @@
-package src;
+package src.model;
+
 public class StarPlayer extends Player {
     private String award;
 

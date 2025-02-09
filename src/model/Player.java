@@ -1,4 +1,5 @@
-package src;
+package src.model;
+
 public class Player extends Person {
     protected int ability;
     protected int salary;

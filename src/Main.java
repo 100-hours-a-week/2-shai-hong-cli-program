@@ -1,5 +1,9 @@
 package src;
 import java.util.*;
+import src.model.Person;
+import src.model.Player;
+import src.model.StarPlayer;
+import src.model.Team;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,10 +33,16 @@ public class Main {
         // 팀 선택 로직
         while (team.getRemainingSalary() > 0 && team.getSelectedPlayers().size() < 5) {
             System.out.print("\n선수 번호 입력: ");
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("❌ 1~10 사이의 번호를 입력해주세요!");
+                scanner.next();  // 잘못된 입력값 소비
+                continue;
+            }
             int choice = scanner.nextInt();
 
-            if (choice < 1 || choice > 10) {
-                System.out.println("❌ 올바른 번호를 입력하세요! (1~10)");
+            if (choice < 1 || choice > players.size()) {
+                System.out.println("❌ 올바른 번호를 입력하세요! (1~" + players.size() + ")");
                 continue;
             }
 
@@ -53,7 +63,7 @@ public class Main {
 
             if (team.addPlayer(selected)) {
                 players.remove(choice - 1); // ✅ 선택한 선수를 리스트에서 제거
-                System.out.println("✅ " + selected.name + "을(를) 팀에 추가했습니다!");
+                System.out.println("✅ " + selected.getName() + "을(를) 팀에 추가했습니다!");
                 System.out.println("💰 현재 총 연봉: " + (200 - team.getRemainingSalary()));
             
                 // 남은 선수 목록 출력
